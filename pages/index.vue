@@ -1,5 +1,6 @@
 <script setup>
 const nuxtApp = useNuxtApp();
+
 const movies = useState("movies", () => null);
 const series = useState("series", () => null);
 if (!movies.value && !series.value) {
@@ -13,12 +14,13 @@ if (!movies.value && !series.value) {
 		},
 	});
 }
+
 </script>
 <template>
 	<div>
 		<section class="mt-12">
 			<h1
-				class=" mb-12 pl-4 font-[sans-serif]  text-6xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl">
+				class="mb-12 pl-4 font-[sans-serif] text-6xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl">
 				<span
 					class="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400"
 					>Öne Çıkan Filmler</span

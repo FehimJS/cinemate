@@ -1,10 +1,32 @@
 <script setup>
+const route = useRoute();
+const config = useRuntimeConfig();
 const itemState = useState("chosenItem");
 const item = itemState.value;
+console.log('ITEM', item.title)
+//Meta////////////////////////////////
+const pageTitle = `${item.title} - MySite`;
+const pageDescription = item.overview;
+const pageKeywords = item.overview;
+const pageUrl = `${config.public.baseURL}/item/${route.params.name}`;
+
+useHead({
+	title: pageTitle,
+	meta: [
+		{ name: "description", content: pageDescription },
+		{ name: "keywords", content: pageKeywords },
+		{ property: "og:title", content: pageTitle },
+		{ property: "og:description", content: pageDescription },
+		{ property: "og:url", content: pageUrl },
+		{ property: "og:type", content: "movie" },
+		{ name: "msapplication-TileColor", content: "#2d89ef" },
+		{ name: "theme-color", content: "#ffffff" },
+	],
+});
+////////////////////////////////////////
 </script>
 <template>
-	<div class="flex items-center justify-center  lg:h-[90vh]">
-		
+	<div class="flex items-center justify-center lg:h-[90vh]">
 		<MovieCard
 			class="overwrite"
 			v-if="item.release_date"
@@ -19,7 +41,7 @@ const item = itemState.value;
 			:popularity="item.popularity" />
 
 		<SeriesCard
-		class="overwrite"
+			class="overwrite"
 			v-if="item.first_air_date"
 			:id="item.id"
 			:name="item.name"
@@ -35,14 +57,12 @@ const item = itemState.value;
 	@apply flex justify-center items-center;
 }
 :deep(.overwrite div) {
-	@apply md:max-w-lg lg:max-w-[75vw]   lg:flex lg:justify-center ;
-
-	
+	@apply md:max-w-lg lg:max-w-[75vw]   lg:flex lg:justify-center;
 }
-:deep(.overwrite div div){
+:deep(.overwrite div div) {
 	@apply lg:flex lg:flex-col lg:justify-start;
-	h5{
-		@apply lg:text-5xl lg:mb-4
+	h5 {
+		@apply lg:text-5xl lg:mb-4;
 	}
 }
 :deep(.overwrite img) {
