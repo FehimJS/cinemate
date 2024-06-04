@@ -9,7 +9,12 @@ const pageKeywords =
 const pageUrl = `${config.public.baseURL}`;
 useHead({
 	title: pageTitle,
+
 	meta: [
+		{
+			name: "google-site-verification",
+			content: "Id84NXIoHANeZ_dw8nNEH7GKTZETy6P3SXVPrDvcgGw",
+		},
 		{ name: "description", content: pageDescription },
 		{ name: "keywords", content: pageKeywords },
 		{ property: "og:title", content: pageTitle },
